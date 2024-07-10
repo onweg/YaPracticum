@@ -5,13 +5,6 @@
 
 using namespace std;
 
-bool comp(pair<int, string> a, pair<int, string> b) {
-    if (a.first == b.first) {
-        return a.second < b.second;
-    }
-    return a.first > b.first;
-}
-
 int main() {
     int count;
     cin >> count;
@@ -23,8 +16,8 @@ int main() {
         // сохраните в вектор пар
         peoples.push_back({age, name});
     }
-    sort(peoples.begin(), peoples.end(), comp);
-    //reverse(peoples.begin(), peoples.end());
+    
+    sort(peoples.begin(), peoples.end(), [](pair<int, string> a, pair<int, string> b){return a.first == b.first ? a.second < b.second : a.first > b.first;});
     
     for (const pair<int, string>& p : peoples) {
         cout << p.second << endl;
