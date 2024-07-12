@@ -10,6 +10,16 @@ pair<bool, double> CalcMedian(vector<double> samples) {
     // иначе - {false, 0}
     // обратите внимание - вектор принимаем по значению,
     // так как его придётся немного подпортить, чтобы вернуть ответ
+    if (samples.empty()) {
+        return {false, 0};
+    }
+    sort(samples.begin(), samples.end());
+    int size = samples.size();
+    if (size % 2 == 0) {
+        return {true, (samples[size / 2] + samples[(size - 1) / 2]) / 2};
+    } else {
+        return {true, samples[size / 2]};
+    }
 }
 
 int main() {
